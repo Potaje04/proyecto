@@ -100,8 +100,9 @@ function App() {
   
   return (
         <div>
-          <h1 className="AppName">{appName}</h1>
+          
           <div className="Teams">
+<h1 className="AppName">{appName}</h1>
            <Children teams={teams}/>
           </div>
         </div>
