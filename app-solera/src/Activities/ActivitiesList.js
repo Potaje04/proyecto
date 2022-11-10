@@ -7,9 +7,8 @@ const ActivitiesList = (props) => {
   if (props.activities.length === 0) {
     return <h2 className="activities-list__fallback">Found no activities</h2>;
   }
-  console.log(props.activities);
   return (
-    <ul className="activities-list">
+    <ul className="activities-list row">
       {props.activities.map((activity) => (
         <Activity
           key={activity.id}

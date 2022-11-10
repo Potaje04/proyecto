@@ -1,5 +1,6 @@
 import React from 'react';
 import './Team.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 const Team = (props) => {
     // Mas tarde exportar
     let sumatotal = 0;
@@ -7,11 +8,10 @@ const Team = (props) => {
         sumatotal = sumatotal + activities.points;
     }
     const changeTeamHandler = () => {
-        console.log('hola ' + props.id)
       props.onChangeTeam(props.id);
     }
     return (
-        <div className="teamCard" onClick={changeTeamHandler}>
+        <div className="teamCard rounded " onClick={changeTeamHandler}>
             <p className="teamName">{props.name}</p>
             <p className="teamPoints">{props.totalPoints}</p>
         </div>

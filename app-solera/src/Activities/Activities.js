@@ -3,14 +3,19 @@ import ActivitiesList from "./ActivitiesList.js";
 import "./Activities.css";
 
 const Activities = (props) => {
-  console.log(props.team.activities);
   return (
-    <div className="Activities">
-      <div className="Activities-Header">
-        <h2>{props.team.name}</h2>
-        <h3>{props.team.totalPoints}</h3>
+    <div className="Activities d-flex bg-white rounded flex-column w-75 ">
+      <div className="Activities-Header  row p-3">
+        <h3 className="d-flex col-6">
+          {props.team.name}
+          </h3>
+          <h3 class="col-6 text-center">
+          {"Puntos: " + props.totalPoints}
+        </h3>
+        <hr/>
       </div>
       <ActivitiesList activities={props.team.activities}/>
+      <button className="btn btn-dark" onClick={props.onChangeTeam}>Back</button>
     </div>
   );
 };
