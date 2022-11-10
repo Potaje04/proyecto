@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 import TeamsList from './Teams/TeamsList.js';
 import Activities from './Activities/Activities.js';
 
@@ -18,17 +18,25 @@ const Children = (props) => {
         setTeamSelected(team);
       }
     };
-    console.log("teamselected= " + teamSelected);
+    const calculateTotalPoints = team =>{ 
+      let sum=0; 
+      for( let a  of  team.activities){
+        sum += parseInt(a.points);
+      }
+       
+      return sum; 
+    }
+
     if (teamSelected) {
       const teamObject = teams.filter((team) => {
-        return team.id == teamSelected;
+        return team.id === teamSelected;
       });
-      show = <Activities team={teamObject[0]} />;
+      show = <Activities onChangeTeam={teamSelectedHandler} team={teamObject[0]} totalPoints={calculateTotalPoints(teamObject[0]) }/>;
     } else {
       show = <TeamsList onChangeTeam={teamSelectedHandler} teams={teams} />;
     }
 
-    return <div>{show}</div>
+    return <div className="d-flex justify-content-center align-items-center p-5">{show}</div>
 }
 
 
