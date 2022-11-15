@@ -1,9 +1,9 @@
-import React from 'react';
-import './App.css';
-import Children from './Children.js';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React from "react";
+import "./App.css";
+import Children from "./Children.js";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-const teams = [
+/* [
   {
     id: "1",
     name: "team1",
@@ -95,18 +95,17 @@ const teams = [
     ],
   },
 ];
-
+*/
 function App() {
   const appName = "SOLERA TEAMS. BOOTCAMP 4";
-  
+
   return (
-        <div className="container">
-          
-          <div className="Teams  bg-secondary d-flex flex-column ">
-            <h1 className="AppName mt-3 ms-5">{appName}</h1>
-           <Children teams={teams}/>
-          </div>
-        </div>
+    <div className="container">
+      <div className="Teams  bg-secondary d-flex flex-column ">
+        <h1 className="AppName mt-3 ms-5">{appName}</h1>
+        <Children />
+      </div>
+    </div>
   );
 }
 
