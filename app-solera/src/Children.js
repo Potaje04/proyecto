@@ -6,8 +6,8 @@ import Activities from "./Activities/Activities.js";
 import { useFetch } from "./Servicios/use-teams.js";
 
 const Children = () => {
-  var { data } = useFetch("http://localhost:5005/api/teams/");
-
+  var teamData = useFetch("http://localhost:5005/api/teams/");
+  var activityData = useFetch("http://localhost:5005/api/activities/");
   let show;
   const [teamSelected, setTeamSelected] = useState(null);
 
@@ -16,7 +16,6 @@ const Children = () => {
       setTeamSelected(null);
     } else {
       console.log(team);
-
       setTeamSelected(team);
     }
   };
@@ -31,18 +30,32 @@ const Children = () => {
   };
 
   if (teamSelected) {
-    const teamObject = data.filter((team) => {
+    const teamObject = teamData.data.filter((team) => {
       return team._id === teamSelected;
     });
+
+    var activities = [];
+
+    for (let activityTeam in teamObject.activities) {
+      for (let activity in activityData.data) {
+        if (activityTeam === activity._id) {
+          activities.push(activity);
+        }
+      }
+    }
+    teamObject.activities = activities;
+  
     show = (
       <Activities
         onChangeTeam={teamSelectedHandler}
-        team={teamSelected}
-        totalPoints={calculateTotalPoints(teamSelected)}
+        team={teamObject}
+        totalPoints={calculateTotalPoints(teamObject)}
       />
     );
   } else {
-    show = <TeamsList onChangeTeam={teamSelectedHandler} teams={data} />;
+    show = (
+      <TeamsList onChangeTeam={teamSelectedHandler} teams={teamData.data} />
+    );
   }
 
   return (
