@@ -98,12 +98,19 @@ const addPoints = async (req, res) => {
             return;
         }
         if (team.activities.indexOf(activityId) === -1) {
-            team.activities.push(activityId);
-            team.totalPoints += activity.points;
+            team.activities.push(activityId, 1);
+            await Activity.findByIdAndUpdate(activityId, { $inc: { arrivePosition: 1 } });
+            for (const act of team.activities) {
+                if (act.activityId === activityId) {
+                    act.pointsMultiplier -= 1;
+                }
+            }
         }
+        team.totalPoints += activity.points;
         await team.save();
         res.status(200).json(team);
-    } catch (error) {
+    }
+    catch (error) {
         res.status(500).json(error);
     }
 }
