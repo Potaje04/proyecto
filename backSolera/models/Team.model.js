@@ -13,10 +13,15 @@ const teamSchema = new Schema(
         },
         activities: [
             {
-                type: Schema.Types.ObjectId,
-                ref: "Activity"
+                activityId: {
+                    type: Schema.Types.ObjectId,
+                    ref: "Activity"
+                },
+                points: {
+                    type: Number,
+                    default: 0
+                },
             }
-
         ],
     },
     {

@@ -7,11 +7,13 @@ const activitySchema = new Schema(
             required: true,
             unique: true
         },
-        points: {
+        //pointsMutiplier
+        arrivePosition: {
             type: Number,
-            required: true,
-            default: 1
-        },
+            default: 3,
+            min: 1,
+            max: 3
+        }
     },
     {
         timestamps: true,
