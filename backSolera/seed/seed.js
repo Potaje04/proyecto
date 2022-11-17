@@ -30,6 +30,7 @@ const seedTeams = async () => {
                 totalPoints: 0,
                 activities: []
             });
+            console.log(team);
             await team.save();
             i++;
         }

@@ -1,15 +1,15 @@
 [
     {
         "name": "Actividad 1",
-        "arrivePosition": 0
-    },
-    {
-        "name": "Actividad 2",
         "arrivePosition": 1
     },
     {
-        "name": "Actividad 3",
+        "name": "Actividad 2",
         "arrivePosition": 2
+    },
+    {
+        "name": "Actividad 3",
+        "arrivePosition": 3
     },
     {
         "name": "Actividad 4",
@@ -17,6 +17,6 @@
     },
     {
         "name": "Actividad 5",
-        "arrivePosition": 4
+        "arrivePosition": 3
     }
 ]
